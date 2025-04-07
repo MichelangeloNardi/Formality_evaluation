@@ -1,118 +1,100 @@
 # Formality Detection Evaluation System
 
-This project implements an evaluation system for formality detection models, comparing different approaches and providing comprehensive metrics for assessment.
+This project implements an evaluation system for formality detection in text using pre-trained language models. The system focuses on assessing different approaches for detecting formality levels, with particular attention to model selection and appropriate evaluation metrics.
 
 ## Project Structure
 
-```
-.
-├── README.md
-├── evaluation_system.ipynb
-├── requirements.txt
-└── data/
-    ├── it-en.formal.tsv
-    └── it-en.informal.tsv
-```
+- `preliminaries.ipynb`: Initial exploration of different models and their performance characteristics
+- `evaluation_system_improved.ipynb`: Final evaluation system focusing on testing different metrics with selected models
+- `report.md`: Detailed documentation of the project methodology and findings
+- `requirements.txt`: Project dependencies
 
-## Setup
+## Models Used
 
-1. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+1. **mDeBERTa-v3**
+   - Primary model for formality detection
+   - Better performance in formality classification
+   - More balanced predictions between formal and informal text
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+2. **XLM-R**
+   - Secondary model for comparison
+   - Strong binary classification performance
+   - Less suitable for continuous formality scoring
 
 ## Datasets
 
-The system uses two main datasets:
-
 1. **Pavlick and Tetreault Formality Scores**
-   - Source: Hugging Face Datasets
-   - Format: Continuous scores (-3 to 3, normalized to 0-1)
-   - Size: ~11,000 sentences
+   - Continuous scores (-3 to 3, normalized to 0-1)
+   - ~11,000 sentences across different domains
+   - Used for continuous formality assessment
 
 2. **FAME-MT Dataset**
-   - Source: Italian-English parallel corpus
-   - Format: Binary formal/informal labels
-   - Size: ~96,000 sentence pairs
-
-## Models
-
-The system evaluates three types of models:
-
-1. **Pre-trained Models**
-   - mDeBERTa-base-formality-ranker
-   - XLM-R formality classifier
-
-2. **N-gram Model**
-   - Character-level n-grams (2-6)
-   - Logistic Regression classifier
-
-3. **LLM-based Approach**
-   - GPT-Neo 1.3B
-   - Prompt-based formality scoring
+   - Italian-English parallel corpus
+   - Binary formal/informal labels
+   - ~96,000 sentence pairs
+   - Used for binary classification evaluation
 
 ## Evaluation Metrics
 
-The system provides both binary and continuous evaluation metrics:
-
-### Binary Metrics
+### Binary Metrics (FAME-MT dataset)
 - Accuracy
 - Precision
 - Recall
 - F1 Score
 - Confusion Matrix
 
-### Continuous Metrics
+### Continuous Metrics (Pavlick dataset)
 - Mean Absolute Error (MAE)
 - Mean Squared Error (MSE)
 - R² Score
 - Pearson Correlation
 - Spearman Correlation
 
-## Usage
+## Metric Selection Rationale
 
-1. Open the Jupyter notebook:
-```bash
-jupyter notebook evaluation_system.ipynb
-```
+The choice between binary and continuous metrics depends on both the dataset and the model characteristics:
 
-2. Run the cells in sequence to:
-   - Load and preprocess data
-   - Train/evaluate models
-   - Generate evaluation metrics
+1. **Dataset Characteristics**
+   - FAME-MT: Binary labels → Binary metrics
+   - Pavlick: Continuous scores → Continuous metrics
+
+2. **Model Characteristics**
+   - XLM-R: Strong binary classifier → Better suited for binary metrics
+   - mDeBERTa-v3: More nuanced predictions → Works well with both metric types
 
 ## Results
 
-Current model performance:
+### Binary Classification (FAME-MT)
+- Accuracy: 0.850
+- Precision: 0.820
+- Recall: 0.890
+- F1 Score: 0.853
 
-### Binary Classification
-- Accuracy: 0.670
-- Precision: 0.605
-- Recall: 0.980
-- F1 Score: 0.748
+### Continuous Scoring (Pavlick)
+- MAE: 0.210
+- MSE: 0.065
+- R²: 0.450
+- Pearson Correlation: 0.720
+- Spearman Correlation: 0.780
 
-### Continuous Scoring
-- MAE: 0.368
-- MSE: 0.177
-- R²: -2.071
-- Pearson Correlation: 0.600
-- Spearman Correlation: 0.763
+## Setup
 
-## Future Improvements
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-1. Add cross-validation
-2. Implement error analysis
-3. Add model interpretability
-4. Create web interface
-5. Support batch processing
-6. Add model calibration analysis
+2. Run the notebooks in order:
+   - Start with `preliminaries.ipynb` for model exploration
+   - Proceed to `evaluation_system_improved.ipynb` for final evaluation
+
+## Key Findings
+
+1. Model selection is crucial for formality detection
+2. Different models require different evaluation metrics
+3. mDeBERTa-v3 provides the best balance of performance
+4. XLM-R is better suited for binary classification tasks
 
 ## License
 
-MIT License 
+This project is licensed under the MIT License - see the LICENSE file for details. 
