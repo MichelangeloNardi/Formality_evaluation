@@ -1,12 +1,12 @@
 # Formality Detection Evaluation System
 
-This project implements an evaluation system for formality detection in text using pre-trained language models. The system focuses on assessing different approaches for detecting formality levels, with particular attention to model selection and appropriate evaluation metrics.
+I created this evaluation system to help assess different approaches for detecting formality levels in text. The system focuses on evaluating pre-trained language models, with particular attention to model selection and appropriate evaluation metrics.
 
 ## Project Structure
 
-- `preliminaries.ipynb`: Initial exploration of different models and their performance characteristics
-- `evaluation_system_improved.ipynb`: Final evaluation system focusing on testing different metrics with selected models
-- `report.md`: Detailed documentation of the project methodology and findings
+- `preliminaries.ipynb`: My initial exploration of different models and their performance characteristics
+- `evaluation_system.ipynb`: Final evaluation system focusing on testing different metrics with selected models
+- `report.md`: Detailed documentation of my methodology and findings
 - `requirements.txt`: Project dependencies
 
 ## Models Used
@@ -52,7 +52,7 @@ This project implements an evaluation system for formality detection in text usi
 
 ## Metric Selection Rationale
 
-The choice between binary and continuous metrics depends on both the dataset and the model characteristics:
+I chose between binary and continuous metrics based on both the dataset and the model characteristics:
 
 1. **Dataset Characteristics**
    - FAME-MT: Binary labels → Binary metrics
@@ -64,20 +64,21 @@ The choice between binary and continuous metrics depends on both the dataset and
 
 ## Results
 
-### Binary Classification (FAME-MT)
-- Accuracy: 0.850
-- Precision: 0.820
-- Recall: 0.890
-- F1 Score: 0.853
+### Binary Classification (FAME-MT - with XLM-R)
+- Accuracy:  0.684
+- Precision: 0.616
+- Recall:    0.968
+- F1 Score:  0.753
 
-### Continuous Scoring (Pavlick)
-- MAE: 0.210
-- MSE: 0.065
-- R²: 0.450
-- Pearson Correlation: 0.720
-- Spearman Correlation: 0.780
+### Continuous Scoring (Pavlick - with mDeBERTa-v3)
+- MAE: 0.172
+- MSE: 0.044
+- RMSE: 0.209
+- R2: 0.149
+- Pearson Correlation: 0.755
+- Spearman Correlation: 0.744
 
-## Setup
+## Setup and Reproduction
 
 1. Install dependencies:
 ```bash

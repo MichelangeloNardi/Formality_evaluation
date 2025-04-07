@@ -1,45 +1,47 @@
-# Formality Detection Evaluation System - Updated Report
+# Formality Detection Evaluation System - Report
 
 ## Introduction
 
-This report documents the development and evaluation of a formality detection system, focusing on pre-trained language models for formality classification. The system was designed to assess different approaches for detecting formality levels in text, with particular attention to model selection and evaluation metrics.
+I created an evaluation system for formality detection models to help maintain consistent formality levels in text. This system allows for comprehensive assessment of different approaches to formality detection, helping to identify the most effective solutions for this task.
 
 ## Methodology
 
 ### Data Collection and Preparation
 
-We used two main datasets:
+I selected two complementary datasets to ensure comprehensive evaluation:
 
 1. **Pavlick and Tetreault Formality Scores**
    - Continuous scores ranging from -3 to 3
    - Normalized to 0-1 range for consistency
    - Contains ~11,000 sentences across different domains
+   - Provides nuanced formality assessment
 
 2. **FAME-MT Dataset**
    - Italian-English parallel corpus
    - Binary formal/informal labels
    - ~96,000 sentence pairs
    - Used English translations for evaluation
+   - Offers clear formal/informal distinction
 
-### Model Selection and Evolution
+### Model Selection and Evaluation Process
 
-Our approach evolved through several iterations:
+I followed a systematic approach to evaluate different formality detection methods:
 
-1. **Initial Model Exploration (preliminaries.ipynb)**
+1. **Initial Exploration (preliminaries.ipynb)**
    - Tested multiple pre-trained models
    - Evaluated different architectures
    - Identified key performance characteristics
    - Focused on understanding model behavior
 
-2. **Final Model Selection (evaluation_system_improved.ipynb)**
+2. **Final Evaluation (evaluation_system_improved.ipynb)**
    - Selected mDeBERTa-v3 as primary model
    - Chose XLM-R as secondary model
    - Implemented appropriate evaluation metrics
-   - Focused on comprehensive testing
+   - Conducted comprehensive testing
 
 ### Evaluation Strategy
 
-We implemented a dual-metric approach based on both dataset and model characteristics:
+I implemented a dual-metric approach based on both dataset and model characteristics:
 
 1. **Dataset-Driven Metric Selection**
    - FAME-MT: Binary metrics (clear formal/informal distinction)
@@ -100,4 +102,4 @@ mDeBERTa-v3 showed better performance in continuous scoring, while XLM-R's binar
 
 ## Conclusion
 
-The evaluation system successfully addressed the initial challenges through careful model selection and appropriate metric implementation. The use of both mDeBERTa-v3 and XLM-R provided complementary strengths, while the focus on appropriate metrics for each dataset-model combination ensured accurate evaluation. The system now provides reliable formality detection across different types of text, with metrics that properly reflect both the dataset characteristics and model behavior. 
+I successfully created an evaluation system that addresses the challenges of formality detection. The system combines two complementary models (mDeBERTa-v3 and XLM-R) with appropriate metrics for different types of formality assessment. This approach provides reliable formality detection across different types of text, with metrics that properly reflect both the dataset characteristics and model behavior. The system can be used to evaluate and compare different formality detection approaches, helping to maintain consistent formality levels in text. 
