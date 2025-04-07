@@ -95,7 +95,3 @@ pip install -r requirements.txt
 2. Different models require different evaluation metrics
 3. mDeBERTa-v3 provides the best balance of performance
 4. XLM-R is better suited for binary classification tasks
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
